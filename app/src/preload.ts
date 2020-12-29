@@ -16,6 +16,7 @@ document.addEventListener('drop', (event) => {
         console.log('File Path of dragged files: ', f.path)
         console.log(f)
         let imgName = f.name;
+        imgName = imgName.replace((/.jpg/gi || /.jpeg/gi || /.png/gi), '');
         let imgPath: string = f.path;
 
         const outputPath = `${f.path.replace(f.name, '')}`;
@@ -34,7 +35,7 @@ document.addEventListener('drop', (event) => {
         }
 
 
-        readFile()
+        readFile();
         function readFile() {
             fs.readFile(imgPath, null, (err: any, data: any) => {
                 if (err) {
@@ -44,8 +45,8 @@ document.addEventListener('drop', (event) => {
                 imageBuffer = data.toString();
                 imageBufferArr = data;
 
-                console.log(imageBuffer);
-                console.log(imageBufferArr);
+                // console.log(imageBuffer);
+                // console.log(imageBufferArr);
 
                 // writeFile(data);
                 sharpWrite(imageBufferArr);
@@ -53,26 +54,43 @@ document.addEventListener('drop', (event) => {
             });
         }
 
-        function readWriteFile(imgPath: any) {
-            const base64Data = imgPath.replace(/^data:image\/jpeg;base64,/, '');
 
 
-            fs.readFile(imgPath, (err: any, data: any) => {
-                if (err) {
+        // sharpWrite(imageBufferArr);
+        function sharpWrite(imageBufferArr: string) {
+            console.log('starting sharp write');
+            sharp(imageBufferArr, { failOnError: false })
+                // .toFile('/home/grant/Pictures/sharp-output.jpg', (err: any, info: any) => {
+                //     if(err) {
+                //         console.error(err)
+                //     }
+                //     console.log()
+                //     console.log('info:', info)
+                // })
+
+                // .resize({
+                //     width: 100
+                // })
+                .trim()
+                .toBuffer()
+                .then((data: string) => {
+                    // @ts-ignore
+                    // console.log(data.toString('base64'));
+                    writeFile(data);
+
+                })
+                .catch((err: any) => {
                     console.error(err);
-                    return;
-                }
-                console.log('the file content is:', data);
+                });
 
-                writeFile(data);
-
-            });
         }
 
-        // writeFile(imgPath)
 
+
+
+        // writeFile(imgPath)
         function writeFile(imgPath: string) {
-            fs.writeFile(`${outputPath}written-file.jpg`, imgPath, (err: any) => {
+            fs.writeFile(`${outputPath}${imgName}-sharped.jpg`, imgPath, (err: any) => {
                 if (err) {
                     console.error(err);
                 }
@@ -82,38 +100,6 @@ document.addEventListener('drop', (event) => {
 
 
 
-
-
-        // sharpWrite(imageBufferArr);
-
-        function sharpWrite(imageBufferArr: string) {
-            console.log('starting sharp write')
-            let sharpObj = sharp(imageBufferArr, { failOnError: false })
-                // .toFile('/home/grant/Pictures/sharp-output.jpg', (err: any, info: any) => {
-                //     if(err) {
-                //         console.error(err)
-                //     }
-                //     console.log()
-                //     console.log('info:', info)
-                // })
-                .resize(100)
-                .toBuffer()
-                .then((data: string) => {
-                    // @ts-ignore
-                    console.log(data.toString('base64'));
-                    writeFile(data);
-
-                })
-                .catch((err: any) => {
-                    console.error(err);
-                })
-
-            console.log(sharpObj);
-
-
-
-
-        }
 
         // console.log(image);
         // console.info(image);
@@ -163,6 +149,24 @@ document.addEventListener('drop', (event) => {
         //         }
         //     })
         // }
+
+
+        function readWriteFile(imgPath: any) {
+            const base64Data = imgPath.replace(/^data:image\/jpeg;base64,/, '');
+
+
+            fs.readFile(imgPath, (err: any, data: any) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                console.log('the file content is:', data);
+
+                writeFile(data);
+
+            });
+        }
+
 
 
     }
