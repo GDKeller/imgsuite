@@ -1,20 +1,20 @@
-const { app, BrowserWindow } = require('electron');
-const path = require('path');
+import { app, BrowserWindow } from 'electron';
+import * as path from 'path';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
 }
 
-const createWindow = () => {
+const createWindow = (): void => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
     height: 600,
+    width: 800,
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  mainWindow.loadFile(path.join(__dirname, '../src/index.html'));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -44,3 +44,4 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+import './render.js'
