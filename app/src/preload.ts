@@ -2,6 +2,17 @@ const fs = require('fs');
 const sharp = require('sharp');
 
 
+const checkboxTrim = document.getElementById('check_trim');
+console.log('checkbox:', checkboxTrim)
+
+
+// @ts-ignore
+file_info = function (data: any) {
+    console.log(data)
+};
+
+
+
 let imageBuffer = '';
 let imageBufferArr: any;
 
@@ -13,14 +24,14 @@ document.addEventListener('drop', (event) => {
     // @ts-ignore
     for (const f of event.dataTransfer.files) {
         // Using the path attribute to get absolute file path
-        console.log('File Path of dragged files: ', f.path)
-        console.log(f)
+        // console.log('File Path of dragged files: ', f.path)
+        // console.log(f)
         let imgName = f.name;
         imgName = imgName.replace((/.jpg/gi || /.jpeg/gi || /.png/gi), '');
         let imgPath: string = f.path;
 
         const outputPath = `${f.path.replace(f.name, '')}`;
-        console.log('first output path:', outputPath);
+        // console.log('first output path:', outputPath);
 
 
         // readWriteFile(imgPath);
@@ -35,7 +46,7 @@ document.addEventListener('drop', (event) => {
         }
 
 
-        readFile();
+        // readFile();
         function readFile() {
             fs.readFile(imgPath, null, (err: any, data: any) => {
                 if (err) {
@@ -72,6 +83,7 @@ document.addEventListener('drop', (event) => {
                 //     width: 100
                 // })
                 .trim()
+                .jpeg()
                 .toBuffer()
                 .then((data: string) => {
                     // @ts-ignore
@@ -172,15 +184,3 @@ document.addEventListener('drop', (event) => {
     }
 });
 
-document.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-});
-
-document.addEventListener('dragenter', (event) => {
-    console.log('File is in the Drop Space');
-});
-
-document.addEventListener('dragleave', (event) => {
-    console.log('File has left the Drop Space');
-});

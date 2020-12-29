@@ -51,4 +51,4 @@ app.on('activate', () => {
 
 
 
-import './render.js'
+// import './render.js'
