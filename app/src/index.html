@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Image Suite</title>
-	<link rel="stylesheet" href="index.css">
-	<script src="render.ts"></script>
+    <meta charset="UTF-8">
+    <title>Image Suite</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 <main>
-	<div class="content-main">
-		<section>
-			<h1>Image Suite</h1>
-			<p>Prep images for the web</p></section>
+    <div class="content-wrapper">
+        <div class="content-main">
+            <section class="info">
+                <h1>Image Suite</h1>
+                <p>Prep images for the web</p>
+            </section>
 
-		<section>
-			<fieldset>
-				<label for="check_resize">Resize</label>
-				<input type="checkbox" name="resize" id="check_resize">
+            <section class="droparea" id="droparea">
+                <p>Drop Files Here</p>
+            </section>
 
-				<label for="input_width">Width</label>
-				<input type="number" name="width" style="width: 4em;margin-right: 0.3em" id="input_width"><span>px</span>
-			</fieldset>
-			<fieldset>
-				<label for="check_trim">Trim Whitespace</label>
-				<input type="checkbox" name="name" id="check_trim">
-			</fieldset>
+            <section class="parameters">
+                <fieldset>
+                    <label for="check_resize">Resize</label>
+                    <input type="checkbox" name="resize" id="check_resize">
 
-		</section>
-	</div>
+                    <label for="input_width">Width</label>
+                    <input type="number" name="width" style="width: 4em;margin-right: 0.3em"
+                           id="input_width"><span>px</span>
+                </fieldset>
+                <fieldset>
+                    <label for="check_trim">Trim Whitespace</label>
+                    <input type="checkbox" name="name" id="check_trim">
+                </fieldset>
+            </section>
+
+            <section>
+                <div class="button">Process Images</div>
+            </section>
+        </div>
+    </div>
 </main>
+<footer>
+    <script src="render.ts"></script>
+</footer>
 </body>
 </html>

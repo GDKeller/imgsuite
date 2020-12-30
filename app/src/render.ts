@@ -1,12 +1,15 @@
 
+let droparea = document.getElementById('droparea');
 
 
 
 
 // File Drop
-document.addEventListener('drop', (event) => {
+droparea.addEventListener('drop', (event) => {
     event.preventDefault();
     event.stopPropagation();
+    droparea.classList.remove('hover');
+    droparea.classList.add('finished');
     console.log('File dropped');
 
     var files = event.dataTransfer.files;
@@ -54,15 +57,18 @@ document.addEventListener('drop', (event) => {
 });
 
 
-document.addEventListener('dragover', (e) => {
+droparea.addEventListener('dragover', (e) => {
     e.preventDefault();
     e.stopPropagation();
+    // console.log('Dragover')
 });
 
-document.addEventListener('dragenter', (event) => {
-    // console.log('File is in the Drop Space');
+droparea.addEventListener('dragenter', (event) => {
+    console.log('File is in the Drop Space');
+    droparea.classList.add('hover');
 });
 
-document.addEventListener('dragleave', (event) => {
-    // console.log('File has left the Drop Space');
+droparea.addEventListener('dragleave', (event) => {
+    console.log('File has left the Drop Space');
+    droparea.classList.remove('hover');
 });
