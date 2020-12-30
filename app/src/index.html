@@ -9,34 +9,44 @@
 <main>
     <div class="content-wrapper">
         <div class="content-main">
-            <section class="info">
-                <h1>Image Suite</h1>
-                <p>Prep images for the web</p>
-            </section>
+            <div class="column">
+                <section class="info">
+                    <h1>Image Suite</h1>
+                    <p>Prep images for the web</p>
+                </section>
 
-            <section class="droparea" id="droparea">
-                <p>Drop Files Here</p>
-            </section>
+                <section class="droparea" id="droparea">
+                    <p>Drop Files Here</p>
+                </section>
 
-            <section class="parameters">
-                <fieldset>
-                    <label for="check_resize">Resize</label>
-                    <input type="checkbox" name="resize" id="check_resize">
+                <section class="parameters">
+                    <fieldset>
+                        <label for="check_resize">Resize</label>
+                        <input type="checkbox" name="resize" id="check_resize">
 
-                    <label for="input_width">Width</label>
-                    <input type="number" name="width" style="width: 4em;margin-right: 0.3em"
-                           id="input_width"><span>px</span>
-                </fieldset>
-                <fieldset>
-                    <label for="check_trim">Trim Whitespace</label>
-                    <input type="checkbox" name="name" id="check_trim">
-                </fieldset>
-            </section>
+                        <label for="input_width">Width</label>
+                        <input type="number" name="width" style="width: 4em;margin-right: 0.3em"
+                               id="input_width"><span>px</span>
+                    </fieldset>
+                    <fieldset>
+                        <label for="check_trim">Trim Whitespace</label>
+                        <input type="checkbox" name="name" id="check_trim">
+                    </fieldset>
+                </section>
 
-            <section>
-                <div class="button">Process Images</div>
-            </section>
+                <section>
+                    <div class="button" id="button_process">Process Images</div>
+                </section>
+
+            </div>
+            <div class="column">
+                <section class="files-list">
+                    <h3>Files to be processed:</h3>
+                    <ul id="files-list"></ul>
+                </section>
+            </div>
         </div>
+
     </div>
 </main>
 <footer>

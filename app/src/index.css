@@ -1,8 +1,9 @@
 html {
-  height: 100%; }
+  height: 100%;
+  background-color: #642B73; }
 
 body {
-  background-color: white;
+  background-color: #642B73;
   font-family: Helvetica, Arial, sans-serif;
   margin: 0;
   height: 100%; }
@@ -23,21 +24,30 @@ body {
     background: linear-gradient(to bottom, #C6426E, #642B73);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
     body main .content-wrapper {
-      padding: 5px;
-      width: calc(100vw - 10px);
-      height: calc(100vh - 10px);
+      padding: 10px;
+      width: calc(100vw - 20px);
+      height: calc(100vh - 20px);
       display: flex;
       justify-content: center;
       align-content: center; }
     body main .content-main {
+      display: flex;
+      width: 100%;
+      max-width: 800px;
       background: white;
       background: -moz-linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.5) 90%);
       background: -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.5) 90%);
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.5) 90%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff", GradientType=1);
       padding: 20px;
       margin: auto;
       box-shadow: 0px 0px 30px rgba(100, 43, 115, 0.3), -10px 10px 0px rgba(50, 0, 100, 0.2); }
+      body main .content-main .column {
+        padding: 20px; }
+        body main .content-main .column:first-child {
+          flex-basis: 35%; }
+        body main .content-main .column:last-child {
+          flex-basis: 65%; }
 
 section {
   position: relative; }
@@ -50,15 +60,21 @@ section {
     border: 2px solid rgba(255, 255, 255, 0.1);
     padding: 60px 20px;
     box-shadow: 0 0 20px rgba(100, 43, 115, 0.5) inset;
-    transition: all 300ms; }
+    transition: all 1000ms; }
     section.droparea.hover {
-      background-color: rgba(8, 93, 158, 0.9); }
+      background-color: rgba(8, 93, 158, 0.9);
+      transition: all 300ms; }
     section.droparea.finished {
-      background-color: rgba(70, 143, 41, 0.8); }
+      background-color: rgba(70, 143, 41, 0.8);
+      transition: all 0ms; }
     section.droparea p {
       text-align: center; }
   section.parameters {
     margin-bottom: 40px; }
+  section.files-list ul {
+    padding-left: 15px; }
+    section.files-list ul li {
+      font-size: 12px; }
 
 fieldset {
   border-style: solid;
