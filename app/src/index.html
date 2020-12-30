@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Image Suite</title>
@@ -14,8 +14,18 @@
 			<p>Prep images for the web</p></section>
 
 		<section>
-			<label>Trim</label>
-			<input type="checkbox" name="name" id="check_trim">
+			<fieldset>
+				<label for="check_resize">Resize</label>
+				<input type="checkbox" name="resize" id="check_resize">
+
+				<label for="input_width">Width</label>
+				<input type="number" name="width" style="width: 4em;margin-right: 0.3em" id="input_width"><span>px</span>
+			</fieldset>
+			<fieldset>
+				<label for="check_trim">Trim Whitespace</label>
+				<input type="checkbox" name="name" id="check_trim">
+			</fieldset>
+
 		</section>
 	</div>
 </main>
